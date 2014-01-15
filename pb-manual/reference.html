@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Library Reference &mdash; python-blosc 1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="python-blosc 1.1 documentation" href="index.html" />
+    <link rel="prev" title="Tutorials" href="tutorial.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorials"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">python-blosc 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="library-reference">
+<h1>Library Reference<a class="headerlink" href="#library-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-level-variables">
+<h2>First level variables<a class="headerlink" href="#first-level-variables" title="Permalink to this headline">¶</a></h2>
+<dl class="attribute">
+<dt id="__version__">
+<tt class="descname">__version__</tt><a class="headerlink" href="#__version__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The version of the carray package.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="blosclib_version">
+<tt class="descname">blosclib_version</tt><a class="headerlink" href="#blosclib_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>The version of the Blosc C library.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ncores">
+<tt class="descname">ncores</tt><a class="headerlink" href="#ncores" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of cores detected.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-blosc">
+<span id="public-functions"></span><h2>Public functions<a class="headerlink" href="#module-blosc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="blosc.compress">
+<tt class="descclassname">blosc.</tt><tt class="descname">compress</tt><big>(</big><em>bytesobj, typesize[, clevel=9, shuffle=True, cname='blosclz']]</em><big>)</big><a class="headerlink" href="#blosc.compress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compress bytesobj, with a given type size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bytesobj</strong> : str / bytes</p>
+<blockquote>
+<div><p>The data to be compressed.</p>
+</div></blockquote>
+<p><strong>typesize</strong> : int</p>
+<blockquote>
+<div><p>The data type size.</p>
+</div></blockquote>
+<p><strong>clevel</strong> : int (optional)</p>
+<blockquote>
+<div><p>The compression level from 0 (no compression) to 9
+(maximum compression).  The default is 9.</p>
+</div></blockquote>
+<p><strong>shuffle</strong> : bool (optional)</p>
+<blockquote>
+<div><p>Whether you want to activate the shuffle filter or not.
+The default is True.</p>
+</div></blockquote>
+<p><strong>cname</strong> : string (optional)</p>
+<blockquote>
+<div><p>The name of the compressor used internally in Blosc.
+It can be any of the supported by Blosc (&#8216;blosclz&#8217;,
+&#8216;lz4&#8217;, &#8216;lz4hc&#8217;, &#8216;snappy&#8217;, &#8216;zlib&#8217; and maybe others too).
+The default is &#8216;blosclz&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str / bytes</p>
+<blockquote>
+<div><p>The compressed data in form of a Python str / bytes object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote>
+<div><p>If bytesobj is not of type bytes or string.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If bytesobj is too long.
+If typesize is not within the allowed range.
+if clevel is not not within the allowed range.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mi">1000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_bytesobj</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c_bytesobj</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">a_bytesobj</span><span class="p">,</span> <span class="n">typesize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">c_bytesobj</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_bytesobj</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.compress_ptr">
+<tt class="descclassname">blosc.</tt><tt class="descname">compress_ptr</tt><big>(</big><em>address, items, typesize[, clevel=9, shuffle=True, cname='blosclz']]</em><big>)</big><a class="headerlink" href="#blosc.compress_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compress the data at address with given items and typesize.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>address</strong> : int or long</p>
+<blockquote>
+<div><p>the pointer to the data to be compressed</p>
+</div></blockquote>
+<p><strong>items</strong> : int</p>
+<blockquote>
+<div><p>The number of items (of typesize) to be compressed.</p>
+</div></blockquote>
+<p><strong>typesize</strong> : int</p>
+<blockquote>
+<div><p>The data type size.</p>
+</div></blockquote>
+<p><strong>clevel</strong> : int (optional)</p>
+<blockquote>
+<div><p>The compression level from 0 (no compression) to 9
+(maximum compression).  The default is 9.</p>
+</div></blockquote>
+<p><strong>shuffle</strong> : bool (optional)</p>
+<blockquote>
+<div><p>Whether you want to activate the shuffle filter or not.
+The default is True.</p>
+</div></blockquote>
+<p><strong>cname</strong> : string (optional)</p>
+<blockquote>
+<div><p>The name of the compressor used internally in Blosc.
+It can be any of the supported by Blosc (&#8216;blosclz&#8217;,
+&#8216;lz4&#8217;, &#8216;lz4hc&#8217;, &#8216;snappy&#8217;, &#8216;zlib&#8217; and maybe others too).
+The default is &#8216;blosclz&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str / bytes</p>
+<blockquote>
+<div><p>The compressed data in form of a Python str / bytes object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote>
+<div><p>If address is not of type int or long.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If items * typesize is larger than the maximum allowed buffer size.
+If typesize is not within the allowed range.
+If clevel is not within the allowed range.
+If cname is not within the supported compressors.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This function can be used anywhere that a memory address is available in
+Python. For example the Numpy &#8220;__array_interface__[&#8216;data&#8217;][0]&#8221; construct,
+or when using the ctypes modules.</p>
+<p>Importantly, the user is responsible for making sure that the memory
+address is valid and that the memory pointed to is contiguous. Passing a
+non-valid address has a high likelihood of crashing the interpreter by
+segfault.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress_ptr</span><span class="p">(</span><span class="n">np_array</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>         <span class="n">items</span><span class="p">,</span> <span class="n">np_array</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np_ans</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">np_array</span> <span class="o">==</span> <span class="n">np_ans</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">typesize</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Array</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">items</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress_ptr</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">addressof</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">items</span><span class="p">,</span> <span class="n">typesize</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ans</span> <span class="o">=</span> <span class="p">[</span><span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">typesize</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">items</span><span class="o">*</span><span class="n">typesize</span><span class="p">,</span><span class="n">typesize</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">==</span> <span class="n">ans</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.decompress">
+<tt class="descclassname">blosc.</tt><tt class="descname">decompress</tt><big>(</big><em>bytesobj</em><big>)</big><a class="headerlink" href="#blosc.decompress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decompresses a bytesobj compressed object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bytesobj</strong> : str / bytes</p>
+<blockquote>
+<div><p>The data to be decompressed.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str / bytes</p>
+<blockquote>
+<div><p>The decompressed data in form of a Python str / bytes object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote class="last">
+<div><p>If bytesobj is not of type bytes or string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mi">1000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_bytesobj</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c_bytesobj</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">a_bytesobj</span><span class="p">,</span> <span class="n">typesize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_bytesobj2</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">c_bytesobj</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_bytesobj</span> <span class="o">==</span> <span class="n">a_bytesobj2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="s">&quot;&quot;</span> <span class="o">==</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">blosc</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">b</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="s">&quot;1&quot;</span><span class="o">*</span><span class="mi">7</span> <span class="o">==</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">blosc</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">b</span><span class="s">&quot;1&quot;</span><span class="o">*</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.decompress_ptr">
+<tt class="descclassname">blosc.</tt><tt class="descname">decompress_ptr</tt><big>(</big><em>bytesobj</em>, <em>address</em><big>)</big><a class="headerlink" href="#blosc.decompress_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decompresses a bytesobj compressed object into the memory at address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>bytesobj</strong> : str / bytes</p>
+<blockquote>
+<div><p>The data to be decompressed.</p>
+</div></blockquote>
+<p><strong>address</strong> : int or long</p>
+<blockquote>
+<div><p>the pointer to the data to be compressed</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nbytes</strong> : int</p>
+<blockquote>
+<div><p>the number of bytes written to the buffer</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote class="last">
+<div><p>If bytesobj is not of type bytes or string.
+If address is not of type int or long.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This function can be used anywhere that a memory address is available in
+Python. For example the Numpy &#8220;__array_interface__[&#8216;data&#8217;][0]&#8221; construct,
+or when using the ctypes modules.</p>
+<p>Importantly, the user is responsible for making sure that the memory
+address is valid and that the memory pointed to is contiguous and can be
+written to. Passing a non-valid address has a high likelihood of crashing
+the interpreter by segfault.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">items</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress_ptr</span><span class="p">(</span><span class="n">np_array</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>         <span class="n">items</span><span class="p">,</span> <span class="n">np_array</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np_ans</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbytes</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress_ptr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">np_ans</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">np_array</span> <span class="o">==</span> <span class="n">np_ans</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbytes</span> <span class="o">==</span> <span class="n">items</span> <span class="o">*</span> <span class="n">np_array</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">typesize</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Array</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">items</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_array</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">compress_ptr</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">addressof</span><span class="p">(</span><span class="n">in_array</span><span class="p">),</span> <span class="n">items</span><span class="p">,</span> <span class="n">typesize</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out_array</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">create_string_buffer</span><span class="p">(</span><span class="n">items</span><span class="o">*</span><span class="n">typesize</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbytes</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">decompress_ptr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">addressof</span><span class="p">(</span><span class="n">out_array</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">struct</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ans</span> <span class="o">=</span> <span class="p">[</span><span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">out_array</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">typesize</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">items</span><span class="o">*</span><span class="n">typesize</span><span class="p">,</span><span class="n">typesize</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">==</span> <span class="n">ans</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nbytes</span> <span class="o">==</span> <span class="n">items</span> <span class="o">*</span> <span class="n">typesize</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.pack_array">
+<tt class="descclassname">blosc.</tt><tt class="descname">pack_array</tt><big>(</big><em>array[, clevel=9, shuffle=True, cname='blosclz']]</em><big>)</big><a class="headerlink" href="#blosc.pack_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pack (compress) a NumPy array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>array</strong> : ndarray</p>
+<blockquote>
+<div><p>The NumPy array to be packed.</p>
+</div></blockquote>
+<p><strong>clevel</strong> : int (optional)</p>
+<blockquote>
+<div><p>The compression level from 0 (no compression) to 9
+(maximum compression).  The default is 9.</p>
+</div></blockquote>
+<p><strong>shuffle</strong> : bool (optional)</p>
+<blockquote>
+<div><p>Whether you want to activate the shuffle filter or not.
+The default is True.</p>
+</div></blockquote>
+<p><strong>cname</strong> : string (optional)</p>
+<blockquote>
+<div><p>The name of the compressor used internally in Blosc.
+It can be any of the supported by Blosc (&#8216;blosclz&#8217;,
+&#8216;lz4&#8217;, &#8216;lz4hc&#8217;, &#8216;snappy&#8217;, &#8216;zlib&#8217; and maybe others too).
+The default is &#8216;blosclz&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : str / bytes</p>
+<blockquote>
+<div><p>The packed array in form of a Python str / bytes object.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote>
+<div><p>If array does not quack like a numpy ndarray.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>If array.itemsize * array.size is larger than the maximum allowed</dt>
+<dd><p class="first last">buffer size.</p>
+</dd>
+</dl>
+<p>If typesize is not within the allowed range.
+If clevel is not within the allowed range.
+If cname is not within the supported compressors.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parray</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">pack_array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">parray</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.unpack_array">
+<tt class="descclassname">blosc.</tt><tt class="descname">unpack_array</tt><big>(</big><em>packed_array</em><big>)</big><a class="headerlink" href="#blosc.unpack_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpack (decompress) a packed NumPy array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>packed_array</strong> : str / bytes</p>
+<blockquote>
+<div><p>The packed array to be decompressed.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote>
+<div><p>The decompressed data in form of a NumPy array.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong> :</p>
+<blockquote class="last">
+<div><p>If packed_array is not of type bytes or string.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parray</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">pack_array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">parray</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">unpack_array</span><span class="p">(</span><span class="n">parray</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">a2</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-blosc">
+<span id="utilities"></span><h2>Utilities<a class="headerlink" href="#module-blosc" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="blosc.compressor_list">
+<tt class="descclassname">blosc.</tt><tt class="descname">compressor_list</tt><big>(</big><big>)</big><a class="headerlink" href="#blosc.compressor_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of compressors available in the Blosc build.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>None</strong> :</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : list</p>
+<blockquote class="last">
+<div><p>The list of names.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.detect_number_of_cores">
+<tt class="descclassname">blosc.</tt><tt class="descname">detect_number_of_cores</tt><big>(</big><big>)</big><a class="headerlink" href="#blosc.detect_number_of_cores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect the number of cores in this system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : int</p>
+<blockquote class="last">
+<div><p>The number of cores in this system.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.free_resources">
+<tt class="descclassname">blosc.</tt><tt class="descname">free_resources</tt><big>(</big><big>)</big><a class="headerlink" href="#blosc.free_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free possible memory temporaries and thread resources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> : None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Blosc maintain a pool of threads waiting for work as well as some
+temporary space.  You can use this function to release these
+resources when you are not going to use Blosc for a long while.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">blosc</span><span class="o">.</span><span class="n">free_resources</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.set_nthreads">
+<tt class="descclassname">blosc.</tt><tt class="descname">set_nthreads</tt><big>(</big><em>nthreads</em><big>)</big><a class="headerlink" href="#blosc.set_nthreads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the number of threads to be used during Blosc operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nthreads</strong> : int</p>
+<blockquote>
+<div><p>The number of threads to be used during Blosc operation.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : int</p>
+<blockquote>
+<div><p>The previous number of used threads.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If nthreads is larger that the maximum number of threads blosc can use.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The number of threads for Blosc is the maximum number of cores
+detected on your machine (via <tt class="docutils literal"><span class="pre">detect_number_of_cores</span></tt>).  In some
+cases Blosc gets better results if you set the number of threads
+to a value slightly below than your number of cores.</p>
+<p class="rubric">Examples</p>
+<p>Set the number of threads to 2 and then to 1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">oldn</span> <span class="o">=</span> <span class="n">blosc</span><span class="o">.</span><span class="n">set_nthreads</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blosc</span><span class="o">.</span><span class="n">set_nthreads</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blosc.print_versions">
+<tt class="descclassname">blosc.</tt><tt class="descname">print_versions</tt><big>(</big><big>)</big><a class="headerlink" href="#blosc.print_versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print all the versions of software that python-blosc relies on.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Library Reference</a><ul>
+<li><a class="reference internal" href="#first-level-variables">First level variables</a></li>
+<li><a class="reference internal" href="#module-blosc">Public functions</a></li>
+<li><a class="reference internal" href="#module-blosc">Utilities</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorials</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/reference.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorials"
+             >previous</a> |</li>
+        <li><a href="index.html">python-blosc 1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Francesc Alted, Valentin Hänel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
